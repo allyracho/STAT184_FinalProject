@@ -5,12 +5,19 @@
 
 Guiding Question (i.e., Research Question): Make a clear statement of a single guiding/research question that will drive your analysis.  It should be phrased as a question that you will try to investigate (i.e., it should have a question mark) 
 
+What is the best time to visit Walt Disney World based on the wait times for rides?
+
 Become acquainted with your data sources:
-Where did you find them?
-Who collected/maintains them?
+Where did you find them? 
+- touringplans.com
+Who collected/maintains them? 
+- Len Testa
 When & Why were they originally collected?
+- As an avid Disney park attendee, Len wanted to find out how to ride all the rides in one day. The collection dates back to 2012
 What does a case represent in each data source, and how many total cases are available?
+- 
 What are some of the variables that you plan to use
+- 
 
 The R Notebook should include R code chunks & output as well as narrative (bullet list is fine at this stage) as you answer these questions
 
