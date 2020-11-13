@@ -1,34 +1,45 @@
-## Final Project Preliminary PDA
-### Ally Racho
-### STAT 184 
-### 15 Nov 2020
+---
+title: "NYPD Complaint Data: STAT 184 Final Project Prelim EDA" 
+author: "Ally Racho"
+output: html_notebook
+---
 
-Guiding Question (i.e., Research Question): Make a clear statement of a single guiding/research question that will drive your analysis.  It should be phrased as a question that you will try to investigate (i.e., it should have a question mark) 
 
-What is the best time to visit Walt Disney World based on the wait times for rides?
+### Research Question
 
-Become acquainted with your data sources:
-Where did you find them? 
-- touringplans.com
-Who collected/maintains them? 
-- Len Testa
-When & Why were they originally collected?
-- As an avid Disney park attendee, Len wanted to find out how to ride all the rides in one day. The collection dates back to 2012
-What does a case represent in each data source, and how many total cases are available?
-- 
-What are some of the variables that you plan to use
-- 
+Based on NYC borough does there seem to be a trend in a certain type of crime committed there?
 
-The R Notebook should include R code chunks & output as well as narrative (bullet list is fine at this stage) as you answer these questions
 
-Explore intuition related to the research question
+### Becoming Acquainted with data:
+-  Where did you find them? 
+  -- data.cityofnewyork.us
+-  Who collected/maintains them? 
+  -- The data is provided by the NYPD and maintained/updated by NYC Open Data.
+-  When & Why were they originally collected?
+  -- The data was originally collected to engage New Yorkers in infomration that is produced and collected by the City government. 
+-  What does a case represent in each data source, and how many total cases are available?
+  -- A case represents a crime that occured on a certain day, time, location. In the original dataset there are 6.5 million cases, but I created a subset which ranges from 2016-2019 and contains 
+-  What are some of the variables that you plan to use
+  -- I plan to use the boro_nm (borough crime occurred in), ofns_desc (crime description), cmplnt_fr_dt (exact time of occurence), and law_cat_cd (level of offense, ie. felony, misdemeanor).
 
-Create some informative plots and summary statistics 
 
-Describe preliminary observations and intuition about the research question
-TWO Data Sources (at least)
-Primary data:  This is the main data source to be used in your investigation and it MUST NOT be loaded directly from an R package. You should have many cases (e.g., at least hundreds--preferably many thousands), many variables including a mixture of both categorical & quantitative variables.  
-Other data sources: No problem for these to come from an R package--for example, the ZipGeography or ZipDemography data (from DataComputing package) might be useful when joined with primary sources as you investigate some phenomenon in the US. 
+### Exploring intuition related to the research question
+
+
+
+### Create some informative plots and summary statistics 
+
+
+### Describe preliminary observations and intuition about the research question
+
+
+### Two Data Sources
+- Primary data:  This is the main data source to be used in your investigation and it MUST NOT be loaded directly from an R package. You should have many cases (e.g., at least hundreds--preferably many thousands), many variables including a mixture of both categorical & quantitative variables.  
+```{r}
+
+```
+
+- Other data sources: No problem for these to come from an R package--for example, the ZipGeography or ZipDemography data (from DataComputing package) might be useful when joined with primary sources as you investigate some phenomenon in the US. 
 
 Note: Each data source should be less than 80-100MB--the maximum file size permitted in a GitHub Repo... use sampling to create a reduced version for the purpose of the project if needed as we've done occasionally in exercises and weekly activities.
 
