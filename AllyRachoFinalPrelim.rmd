@@ -10,6 +10,12 @@ library(mosaic)
 library(tidyverse)
 ```
 
+Since the original dataset has over 1 million cases and is to large of a file, I will be sampling my data to a smaller set of 250000 cases. 
+```{r}
+SampleData <-
+  sample(NYPD_Complaint_Data_Historic, 250000)
+```
+
 
 ### Research Question
 
@@ -39,7 +45,7 @@ Based on NYC borough does there seem to be a trend in a certain type of crime co
 Level of crime faceted among the boroughs
 ```{r}
 FelonyMisdCrimeBasedonBorough <-
-  NYPD_Complaint_Data_Historic %>%
+  SampleData %>%
   group_by(BORO_NM,LAW_CAT_CD) %>%
   summarize(total = sum(n()))
 
@@ -54,7 +60,7 @@ FelonyMisdCrimeBasedonBorough
 Most popular crime based on borough
 ```{r}
 PopularBoroughCrime <-
-  NYPD_Complaint_Data_Historic %>%
+  SampleData %>%
   group_by(BORO_NM, OFNS_DESC) %>%
   summarise(total = sum(n())) %>%
   filter(total == max(total))
@@ -67,16 +73,25 @@ PopularBoroughCrime %>%
 
 
 ### Describe preliminary observations and intuition about the research question
-Plot 1. You can see from the distribution, 
+Plot 1:
+- You can see from the distribution, the most popular level of crime is misdemeanor, with felony second. Brooklyn appears to have the highest amount of crime, and staten island the lowest.
+Plot 2:
+- The crime that happens the most often is petit larceny, with the maximum total amount of times approximately ~20000 in Manhattan. Harrassment 2 is the leading crime in staten island with approximately ~2500 occurences. 
 
 
 ### Two Data Sources
 - Primary data:  This is the main data source to be used in your investigation and it MUST NOT be loaded directly from an R package. You should have many cases (e.g., at least hundreds--preferably many thousands), many variables including a mixture of both categorical & quantitative variables.  
 ```{r}
-
+library(readr)
+NYC_crime <- read_csv("NYPD_Complaint_Data_Historic.csv")
+View(NYC_crime)
 ```
 
 - Other data sources: No problem for these to come from an R package--for example, the ZipGeography or ZipDemography data (from DataComputing package) might be useful when joined with primary sources as you investigate some phenomenon in the US. 
+```{r}
+
+```
+
 
 Note: Each data source should be less than 80-100MB--the maximum file size permitted in a GitHub Repo... use sampling to create a reduced version for the purpose of the project if needed as we've done occasionally in exercises and weekly activities.
 
