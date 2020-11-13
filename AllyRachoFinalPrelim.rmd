@@ -4,6 +4,12 @@ author: "Ally Racho"
 output: html_notebook
 ---
 
+Necessary Libraries:
+```{r}
+library(mosaic)
+library(tidyverse)
+```
+
 
 ### Research Question
 
@@ -27,10 +33,41 @@ Based on NYC borough does there seem to be a trend in a certain type of crime co
 
 
 
+
 ### Create some informative plots and summary statistics 
+
+Level of crime faceted among the boroughs
+```{r}
+FelonyMisdCrimeBasedonBorough <-
+  NYPD_Complaint_Data_Historic %>%
+  group_by(BORO_NM,LAW_CAT_CD) %>%
+  summarize(total = sum(n()))
+
+FelonyMisdCrimeBasedonBorough %>%
+  ggplot(aes(x = LAW_CAT_CD, y = total, fill = LAW_CAT_CD))+
+  geom_bar(stat= 'identity', position = 'dodge', width = .9)+
+  facet_wrap(~ BORO_NM, ncol=3)
+
+FelonyMisdCrimeBasedonBorough
+```
+
+Most popular crime based on borough
+```{r}
+PopularBoroughCrime <-
+  NYPD_Complaint_Data_Historic %>%
+  group_by(BORO_NM, OFNS_DESC) %>%
+  summarise(total = sum(n())) %>%
+  filter(total == max(total))
+
+PopularBoroughCrime %>%
+  ggplot(aes(x = BORO_NM, y = total, fill = OFNS_DESC))+
+  geom_bar(stat= 'identity', position = 'dodge', width = .9)
+```
+
 
 
 ### Describe preliminary observations and intuition about the research question
+Plot 1. You can see from the distribution, 
 
 
 ### Two Data Sources
