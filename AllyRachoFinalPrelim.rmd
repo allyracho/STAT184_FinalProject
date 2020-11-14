@@ -10,7 +10,7 @@ library(mosaic)
 library(tidyverse)
 ```
 
-Since the original dataset has over 1 million cases and is to large of a file, I will be sampling my data to a smaller set of 250000 cases. 
+Since the original dataset has over 1 million cases and is too large of a file, I will be sampling my data to a smaller set of 250000 cases. 
 ```{r}
 SampleData <-
   sample(NYPD_Complaint_Data_Historic, 250000)
@@ -19,26 +19,45 @@ SampleData <-
 
 ### Research Question
 
-Based on NYC borough does there seem to be a trend in a certain type of crime committed there?
+Based on the NYC borough does there seem to be a trend in a certain type of crime committed there?
 
 
 ### Becoming Acquainted with data:
+
 -  Where did you find them? 
   -- data.cityofnewyork.us
+  -- R package
+
 -  Who collected/maintains them? 
-  -- The data is provided by the NYPD and maintained/updated by NYC Open Data.
+  -- The dataset for NYPD_Complaint_Data_Historic is provided by the NYPD and maintained/updated by NYC Open Data.
+  -- The data for ZipDemography is provided and maintained by RStudio.
+
 -  When & Why were they originally collected?
-  -- The data was originally collected to engage New Yorkers in infomration that is produced and collected by the City government. 
+  -- The NYPD data was originally collected to engage New Yorkers in information that is produced and collected by the City government. 
+  -- The ZipDemography was provided as data tables used as examples in the Data Computing book
+    and exercises.
+
 -  What does a case represent in each data source, and how many total cases are available?
-  -- A case represents a crime that occured on a certain day, time, location. In the original dataset there are 6.5 million cases, but I created a subset which ranges from 2016-2019 and contains 
+  -- A case for NYPD represents a crime that occured on a certain day, time, location. In the original dataset there are 6.5 million cases, but I created a sample subset which contains 250000.
+  -- A case for ZipDemography represents data such as race, education, wages based on ZIP code.
+
 -  What are some of the variables that you plan to use
-  -- I plan to use the boro_nm (borough crime occurred in), ofns_desc (crime description), cmplnt_fr_dt (exact time of occurence), and law_cat_cd (level of offense, ie. felony, misdemeanor).
+  -- For NYPD dataset, I plan to use the BORO_NM (borough crime occurred in), OFNS_DESC (crime description), CMPLNT_FR_DT (exact time of occurence), and LAW_CAT_CD (level of offense, ie. felony, misdemeanor).
+  -- For ZipDemography, I plan to use Highschoolgraduateorhigher, medianfamilyincomedollars, Familiesbelowpovertylevel, ZIP. 
 
+```{r}
+names(NYPD_Complaint_Data_Historic)     ## Names of variables
+nrow(NYPD_Complaint_Data_Historic)       ## Number of Cases
+str(NYPD_Complaint_Data_Historic)       ## Structure of object, information of class
+```
 
-### Exploring intuition related to the research question
+```{r}
+names(ZipDemography)     ## Names of variables
+nrow(ZipDemography)       ## Number of Cases
+str(ZipDemography)       ## Structure of object, information of class
+```
 
-
-
+## Exploring intuition related to the research question
 
 ### Create some informative plots and summary statistics 
 
@@ -70,6 +89,10 @@ PopularBoroughCrime %>%
   geom_bar(stat= 'identity', position = 'dodge', width = .9)
 ```
 
+```{r}
+
+```
+
 
 
 ### Describe preliminary observations and intuition about the research question
@@ -83,13 +106,14 @@ Plot 2:
 - Primary data:  This is the main data source to be used in your investigation and it MUST NOT be loaded directly from an R package. You should have many cases (e.g., at least hundreds--preferably many thousands), many variables including a mixture of both categorical & quantitative variables.  
 ```{r}
 library(readr)
-NYC_crime <- read_csv("NYPD_Complaint_Data_Historic.csv")
+NYC_crime <- read_csv('/home/axr402/STAT184 ACTIVITY/STAT184_FinalProject/')
 View(NYC_crime)
 ```
 
 - Other data sources: No problem for these to come from an R package--for example, the ZipGeography or ZipDemography data (from DataComputing package) might be useful when joined with primary sources as you investigate some phenomenon in the US. 
 ```{r}
-
+library(DataComputing)
+data("ZipDemography")
 ```
 
 

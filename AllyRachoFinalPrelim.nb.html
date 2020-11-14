@@ -316,7 +316,7 @@ The following objects are masked from ‘package:base’:
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Since the original dataset has over 1 million cases and is to large of a file, I will be sampling my data to a smaller set of 250000 cases.</p>
+<p>Since the original dataset has over 1 million cases and is too large of a file, I will be sampling my data to a smaller set of 250000 cases.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU2FtcGxlRGF0YSA8LVxuICBzYW1wbGUoTllQRF9Db21wbGFpbnRfRGF0YV9IaXN0b3JpYywgMjUwMDAwKVxuYGBgIn0= -->
@@ -327,21 +327,38 @@ The following objects are masked from ‘package:base’:
 <!-- rnb-text-begin -->
 <div id="research-question" class="section level3">
 <h3>Research Question</h3>
-<p>Based on NYC borough does there seem to be a trend in a certain type of crime committed there?</p>
+<p>Based on the NYC borough does there seem to be a trend in a certain type of crime committed there?</p>
 </div>
 <div id="becoming-acquainted-with-data" class="section level3">
 <h3>Becoming Acquainted with data:</h3>
 <ul>
-<li>Where did you find them? – data.cityofnewyork.us</li>
-<li>Who collected/maintains them? – The data is provided by the NYPD and maintained/updated by NYC Open Data.</li>
-<li>When &amp; Why were they originally collected? – The data was originally collected to engage New Yorkers in infomration that is produced and collected by the City government.</li>
-<li>What does a case represent in each data source, and how many total cases are available? – A case represents a crime that occured on a certain day, time, location. In the original dataset there are 6.5 million cases, but I created a subset which ranges from 2016-2019 and contains</li>
-<li>What are some of the variables that you plan to use – I plan to use the boro_nm (borough crime occurred in), ofns_desc (crime description), cmplnt_fr_dt (exact time of occurence), and law_cat_cd (level of offense, ie. felony, misdemeanor).</li>
+<li><p>Where did you find them? – data.cityofnewyork.us – R package</p></li>
+<li><p>Who collected/maintains them? – The dataset for NYPD_Complaint_Data_Historic is provided by the NYPD and maintained/updated by NYC Open Data. – The data for ZipDemography is provided and maintained by RStudio.</p></li>
+<li><p>When &amp; Why were they originally collected? – The NYPD data was originally collected to engage New Yorkers in information that is produced and collected by the City government. – The ZipDemography was provided as data tables used as examples in the Data Computing book and exercises.</p></li>
+<li><p>What does a case represent in each data source, and how many total cases are available? – A case for NYPD represents a crime that occured on a certain day, time, location. In the original dataset there are 6.5 million cases, but I created a sample subset which contains 250000. – A case for ZipDemography represents data such as race, education, wages based on ZIP code.</p></li>
+<li><p>What are some of the variables that you plan to use – For NYPD dataset, I plan to use the BORO_NM (borough crime occurred in), OFNS_DESC (crime description), CMPLNT_FR_DT (exact time of occurence), and LAW_CAT_CD (level of offense, ie. felony, misdemeanor). – For ZipDemography, I plan to use Highschoolgraduateorhigher, medianfamilyincomedollars, Familiesbelowpovertylevel, ZIP.</p></li>
 </ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmFtZXMoTllQRF9Db21wbGFpbnRfRGF0YV9IaXN0b3JpYykgICAgICMjIE5hbWVzIG9mIHZhcmlhYmxlc1xubnJvdyhOWVBEX0NvbXBsYWludF9EYXRhX0hpc3RvcmljKSAgICAgICAjIyBOdW1iZXIgb2YgQ2FzZXNcbnN0cihOWVBEX0NvbXBsYWludF9EYXRhX0hpc3RvcmljKSAgICAgICAjIyBTdHJ1Y3R1cmUgb2Ygb2JqZWN0LCBpbmZvcm1hdGlvbiBvZiBjbGFzc1xuYGBgIn0= -->
+<pre class="r"><code>names(NYPD_Complaint_Data_Historic)     ## Names of variables
+nrow(NYPD_Complaint_Data_Historic)       ## Number of Cases
+str(NYPD_Complaint_Data_Historic)       ## Structure of object, information of class</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubmFtZXMoWmlwRGVtb2dyYXBoeSkgICAgICMjIE5hbWVzIG9mIHZhcmlhYmxlc1xubnJvdyhaaXBEZW1vZ3JhcGh5KSAgICAgICAjIyBOdW1iZXIgb2YgQ2FzZXNcbnN0cihaaXBEZW1vZ3JhcGh5KSAgICAgICAjIyBTdHJ1Y3R1cmUgb2Ygb2JqZWN0LCBpbmZvcm1hdGlvbiBvZiBjbGFzc1xuYGBgIn0= -->
+<pre class="r"><code>names(ZipDemography)     ## Names of variables
+nrow(ZipDemography)       ## Number of Cases
+str(ZipDemography)       ## Structure of object, information of class</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 </div>
-<div id="exploring-intuition-related-to-the-research-question" class="section level3">
-<h3>Exploring intuition related to the research question</h3>
-</div>
+<div id="exploring-intuition-related-to-the-research-question" class="section level2">
+<h2>Exploring intuition related to the research question</h2>
 <div id="create-some-informative-plots-and-summary-statistics" class="section level3">
 <h3>Create some informative plots and summary statistics</h3>
 <p>Level of crime faceted among the boroughs</p>
@@ -390,6 +407,10 @@ PopularBoroughCrime %&gt;%
 <!-- rnb-plot-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 </div>
 <div id="describe-preliminary-observations-and-intuition-about-the-research-question" class="section level3">
 <h3>Describe preliminary observations and intuition about the research question</h3>
@@ -402,11 +423,13 @@ PopularBoroughCrime %&gt;%
 </ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVhZC5jc3YoXCJDOlxcXFxVc2Vyc1xcXFxhbGx5cmFjaG9cXFxcRGVza3RvcFxcXFxOWVBEX0NvbXBsYWludF9EYXRhX0hpc3RvcmljLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuYGBgIn0= -->
-<pre class="r"><code>read.csv(&quot;C:\\Users\\allyracho\\Desktop\\NYPD_Complaint_Data_Historic.csv&quot;, header = TRUE)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShyZWFkcilcbk5ZQ19jcmltZSA8LSByZWFkX2NzdignL2hvbWUvYXhyNDAyL1NUQVQxODQgQUNUSVZJVFkvU1RBVDE4NF9GaW5hbFByb2plY3QvJylcbmBgYCJ9 -->
+<pre class="r"><code>library(readr)
+NYC_crime &lt;- read_csv('/home/axr402/STAT184 ACTIVITY/STAT184_FinalProject/')</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiY2Fubm90IG9wZW4gZmlsZSAnQzpcXFVzZXJzXFxhbGx5cmFjaG9cXERlc2t0b3BcXE5ZUERfQ29tcGxhaW50X0RhdGFfSGlzdG9yaWMuY3N2JzogTm8gc3VjaCBmaWxlIG9yIGRpcmVjdG9yeUVycm9yIGluIGZpbGUoZmlsZSwgXCJydFwiKSA6IGNhbm5vdCBvcGVuIHRoZSBjb25uZWN0aW9uXG4ifQ== -->
-<pre><code>cannot open file 'C:\Users\allyracho\Desktop\NYPD_Complaint_Data_Historic.csv': No such file or directoryError in file(file, &quot;rt&quot;) : cannot open the connection</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZ3Vlc3NfaGVhZGVyXyhkYXRhc291cmNlLCB0b2tlbml6ZXIsIGxvY2FsZSkgOiBcbiAgQ2Fubm90IHJlYWQgZmlsZSAvaG9tZS9heHI0MDIvU1RBVDE4NCBBQ1RJVklUWS9TVEFUMTg0X0ZpbmFsUHJvamVjdDogTm8gc3VjaCBkZXZpY2VcbiJ9 -->
+<pre><code>Error in guess_header_(datasource, tokenizer, locale) : 
+  Cannot read file /home/axr402/STAT184 ACTIVITY/STAT184_FinalProject: No such device</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -415,13 +438,35 @@ PopularBoroughCrime %&gt;%
 </ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShEYXRhQ29tcHV0aW5nKVxuYGBgIn0= -->
+<pre class="r"><code>library(DataComputing)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBkcGx5clxuXG5BdHRhY2hpbmcgcGFja2FnZTog4oCYZHBseXLigJlcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOnN0YXRz4oCZOlxuXG4gICAgZmlsdGVyLCBsYWdcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDigJhwYWNrYWdlOmJhc2XigJk6XG5cbiAgICBpbnRlcnNlY3QsIHNldGRpZmYsIHNldGVxdWFsLCB1bmlvblxuXG5Mb2FkaW5nIHJlcXVpcmVkIHBhY2thZ2U6IGdncGxvdDJcbiJ9 -->
+<pre><code>Loading required package: dplyr
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: ggplot2</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YShaaXBHZW9ncmFwaHkpXG5gYGAifQ== -->
+<pre class="r"><code>data(ZipGeography)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Note: Each data source should be less than 80-100MB–the maximum file size permitted in a GitHub Repo… use sampling to create a reduced version for the purpose of the project if needed as we’ve done occasionally in exercises and weekly activities.</p>
 <!-- rnb-text-end -->
 </div>
+</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiTllQRCBDb21wbGFpbnQgRGF0YTogU1RBVCAxODQgRmluYWwgUHJvamVjdCBQcmVsaW0gRURBIiAKYXV0aG9yOiAiQWxseSBSYWNobyIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKTmVjZXNzYXJ5IExpYnJhcmllczoKYGBge3J9CmxpYnJhcnkobW9zYWljKQpsaWJyYXJ5KHRpZHl2ZXJzZSkKYGBgCgpTaW5jZSB0aGUgb3JpZ2luYWwgZGF0YXNldCBoYXMgb3ZlciAxIG1pbGxpb24gY2FzZXMgYW5kIGlzIHRvIGxhcmdlIG9mIGEgZmlsZSwgSSB3aWxsIGJlIHNhbXBsaW5nIG15IGRhdGEgdG8gYSBzbWFsbGVyIHNldCBvZiAyNTAwMDAgY2FzZXMuIApgYGB7cn0KU2FtcGxlRGF0YSA8LQogIHNhbXBsZShOWVBEX0NvbXBsYWludF9EYXRhX0hpc3RvcmljLCAyNTAwMDApCmBgYAoKCiMjIyBSZXNlYXJjaCBRdWVzdGlvbgoKQmFzZWQgb24gTllDIGJvcm91Z2ggZG9lcyB0aGVyZSBzZWVtIHRvIGJlIGEgdHJlbmQgaW4gYSBjZXJ0YWluIHR5cGUgb2YgY3JpbWUgY29tbWl0dGVkIHRoZXJlPwoKCiMjIyBCZWNvbWluZyBBY3F1YWludGVkIHdpdGggZGF0YToKLSAgV2hlcmUgZGlkIHlvdSBmaW5kIHRoZW0/IAogIC0tIGRhdGEuY2l0eW9mbmV3eW9yay51cwotICBXaG8gY29sbGVjdGVkL21haW50YWlucyB0aGVtPyAKICAtLSBUaGUgZGF0YSBpcyBwcm92aWRlZCBieSB0aGUgTllQRCBhbmQgbWFpbnRhaW5lZC91cGRhdGVkIGJ5IE5ZQyBPcGVuIERhdGEuCi0gIFdoZW4gJiBXaHkgd2VyZSB0aGV5IG9yaWdpbmFsbHkgY29sbGVjdGVkPwogIC0tIFRoZSBkYXRhIHdhcyBvcmlnaW5hbGx5IGNvbGxlY3RlZCB0byBlbmdhZ2UgTmV3IFlvcmtlcnMgaW4gaW5mb21yYXRpb24gdGhhdCBpcyBwcm9kdWNlZCBhbmQgY29sbGVjdGVkIGJ5IHRoZSBDaXR5IGdvdmVybm1lbnQuIAotICBXaGF0IGRvZXMgYSBjYXNlIHJlcHJlc2VudCBpbiBlYWNoIGRhdGEgc291cmNlLCBhbmQgaG93IG1hbnkgdG90YWwgY2FzZXMgYXJlIGF2YWlsYWJsZT8KICAtLSBBIGNhc2UgcmVwcmVzZW50cyBhIGNyaW1lIHRoYXQgb2NjdXJlZCBvbiBhIGNlcnRhaW4gZGF5LCB0aW1lLCBsb2NhdGlvbi4gSW4gdGhlIG9yaWdpbmFsIGRhdGFzZXQgdGhlcmUgYXJlIDYuNSBtaWxsaW9uIGNhc2VzLCBidXQgSSBjcmVhdGVkIGEgc3Vic2V0IHdoaWNoIHJhbmdlcyBmcm9tIDIwMTYtMjAxOSBhbmQgY29udGFpbnMgCi0gIFdoYXQgYXJlIHNvbWUgb2YgdGhlIHZhcmlhYmxlcyB0aGF0IHlvdSBwbGFuIHRvIHVzZQogIC0tIEkgcGxhbiB0byB1c2UgdGhlIGJvcm9fbm0gKGJvcm91Z2ggY3JpbWUgb2NjdXJyZWQgaW4pLCBvZm5zX2Rlc2MgKGNyaW1lIGRlc2NyaXB0aW9uKSwgY21wbG50X2ZyX2R0IChleGFjdCB0aW1lIG9mIG9jY3VyZW5jZSksIGFuZCBsYXdfY2F0X2NkIChsZXZlbCBvZiBvZmZlbnNlLCBpZS4gZmVsb255LCBtaXNkZW1lYW5vcikuCgoKIyMjIEV4cGxvcmluZyBpbnR1aXRpb24gcmVsYXRlZCB0byB0aGUgcmVzZWFyY2ggcXVlc3Rpb24KCgoKCiMjIyBDcmVhdGUgc29tZSBpbmZvcm1hdGl2ZSBwbG90cyBhbmQgc3VtbWFyeSBzdGF0aXN0aWNzIAoKTGV2ZWwgb2YgY3JpbWUgZmFjZXRlZCBhbW9uZyB0aGUgYm9yb3VnaHMKYGBge3J9CkZlbG9ueU1pc2RDcmltZUJhc2Vkb25Cb3JvdWdoIDwtCiAgU2FtcGxlRGF0YSAlPiUKICBncm91cF9ieShCT1JPX05NLExBV19DQVRfQ0QpICU+JQogIHN1bW1hcml6ZSh0b3RhbCA9IHN1bShuKCkpKQoKRmVsb255TWlzZENyaW1lQmFzZWRvbkJvcm91Z2ggJT4lCiAgZ2dwbG90KGFlcyh4ID0gTEFXX0NBVF9DRCwgeSA9IHRvdGFsLCBmaWxsID0gTEFXX0NBVF9DRCkpKwogIGdlb21fYmFyKHN0YXQ9ICdpZGVudGl0eScsIHBvc2l0aW9uID0gJ2RvZGdlJywgd2lkdGggPSAuOSkrCiAgZmFjZXRfd3JhcCh+IEJPUk9fTk0sIG5jb2w9MykKCkZlbG9ueU1pc2RDcmltZUJhc2Vkb25Cb3JvdWdoCmBgYAoKTW9zdCBwb3B1bGFyIGNyaW1lIGJhc2VkIG9uIGJvcm91Z2gKYGBge3J9ClBvcHVsYXJCb3JvdWdoQ3JpbWUgPC0KICBTYW1wbGVEYXRhICU+JQogIGdyb3VwX2J5KEJPUk9fTk0sIE9GTlNfREVTQykgJT4lCiAgc3VtbWFyaXNlKHRvdGFsID0gc3VtKG4oKSkpICU+JQogIGZpbHRlcih0b3RhbCA9PSBtYXgodG90YWwpKQoKUG9wdWxhckJvcm91Z2hDcmltZSAlPiUKICBnZ3Bsb3QoYWVzKHggPSBCT1JPX05NLCB5ID0gdG90YWwsIGZpbGwgPSBPRk5TX0RFU0MpKSsKICBnZW9tX2JhcihzdGF0PSAnaWRlbnRpdHknLCBwb3NpdGlvbiA9ICdkb2RnZScsIHdpZHRoID0gLjkpCmBgYAoKCgojIyMgRGVzY3JpYmUgcHJlbGltaW5hcnkgb2JzZXJ2YXRpb25zIGFuZCBpbnR1aXRpb24gYWJvdXQgdGhlIHJlc2VhcmNoIHF1ZXN0aW9uClBsb3QgMToKLSBZb3UgY2FuIHNlZSBmcm9tIHRoZSBkaXN0cmlidXRpb24sIHRoZSBtb3N0IHBvcHVsYXIgbGV2ZWwgb2YgY3JpbWUgaXMgbWlzZGVtZWFub3IsIHdpdGggZmVsb255IHNlY29uZC4gQnJvb2tseW4gYXBwZWFycyB0byBoYXZlIHRoZSBoaWdoZXN0IGFtb3VudCBvZiBjcmltZSwgYW5kIHN0YXRlbiBpc2xhbmQgdGhlIGxvd2VzdC4KUGxvdCAyOgotIFRoZSBjcmltZSB0aGF0IGhhcHBlbnMgdGhlIG1vc3Qgb2Z0ZW4gaXMgcGV0aXQgbGFyY2VueSwgd2l0aCB0aGUgbWF4aW11bSB0b3RhbCBhbW91bnQgb2YgdGltZXMgYXBwcm94aW1hdGVseSB+MjAwMDAgaW4gTWFuaGF0dGFuLiBIYXJyYXNzbWVudCAyIGlzIHRoZSBsZWFkaW5nIGNyaW1lIGluIHN0YXRlbiBpc2xhbmQgd2l0aCBhcHByb3hpbWF0ZWx5IH4yNTAwIG9jY3VyZW5jZXMuIAoKCiMjIyBUd28gRGF0YSBTb3VyY2VzCi0gUHJpbWFyeSBkYXRhOiAgVGhpcyBpcyB0aGUgbWFpbiBkYXRhIHNvdXJjZSB0byBiZSB1c2VkIGluIHlvdXIgaW52ZXN0aWdhdGlvbiBhbmQgaXQgTVVTVCBOT1QgYmUgbG9hZGVkIGRpcmVjdGx5IGZyb20gYW4gUiBwYWNrYWdlLiBZb3Ugc2hvdWxkIGhhdmUgbWFueSBjYXNlcyAoZS5nLiwgYXQgbGVhc3QgaHVuZHJlZHMtLXByZWZlcmFibHkgbWFueSB0aG91c2FuZHMpLCBtYW55IHZhcmlhYmxlcyBpbmNsdWRpbmcgYSBtaXh0dXJlIG9mIGJvdGggY2F0ZWdvcmljYWwgJiBxdWFudGl0YXRpdmUgdmFyaWFibGVzLiAgCmBgYHtyfQpsaWJyYXJ5KHJlYWRyKQpOWUNfY3JpbWUgPC0gcmVhZF9jc3YoIk5ZUERfQ29tcGxhaW50X0RhdGFfSGlzdG9yaWMuY3N2IikKVmlldyhOWUNfY3JpbWUpCmBgYAoKLSBPdGhlciBkYXRhIHNvdXJjZXM6IE5vIHByb2JsZW0gZm9yIHRoZXNlIHRvIGNvbWUgZnJvbSBhbiBSIHBhY2thZ2UtLWZvciBleGFtcGxlLCB0aGUgWmlwR2VvZ3JhcGh5IG9yIFppcERlbW9ncmFwaHkgZGF0YSAoZnJvbSBEYXRhQ29tcHV0aW5nIHBhY2thZ2UpIG1pZ2h0IGJlIHVzZWZ1bCB3aGVuIGpvaW5lZCB3aXRoIHByaW1hcnkgc291cmNlcyBhcyB5b3UgaW52ZXN0aWdhdGUgc29tZSBwaGVub21lbm9uIGluIHRoZSBVUy4gCmBgYHtyfQoKYGBgCgoKTm90ZTogRWFjaCBkYXRhIHNvdXJjZSBzaG91bGQgYmUgbGVzcyB0aGFuIDgwLTEwME1CLS10aGUgbWF4aW11bSBmaWxlIHNpemUgcGVybWl0dGVkIGluIGEgR2l0SHViIFJlcG8uLi4gdXNlIHNhbXBsaW5nIHRvIGNyZWF0ZSBhIHJlZHVjZWQgdmVyc2lvbiBmb3IgdGhlIHB1cnBvc2Ugb2YgdGhlIHByb2plY3QgaWYgbmVlZGVkIGFzIHdlJ3ZlIGRvbmUgb2NjYXNpb25hbGx5IGluIGV4ZXJjaXNlcyBhbmQgd2Vla2x5IGFjdGl2aXRpZXMuCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiTllQRCBDb21wbGFpbnQgRGF0YTogU1RBVCAxODQgRmluYWwgUHJvamVjdCBQcmVsaW0gRURBIiAKYXV0aG9yOiAiQWxseSBSYWNobyIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKTmVjZXNzYXJ5IExpYnJhcmllczoKYGBge3J9CmxpYnJhcnkobW9zYWljKQpsaWJyYXJ5KHRpZHl2ZXJzZSkKYGBgCgpTaW5jZSB0aGUgb3JpZ2luYWwgZGF0YXNldCBoYXMgb3ZlciAxIG1pbGxpb24gY2FzZXMgYW5kIGlzIHRvbyBsYXJnZSBvZiBhIGZpbGUsIEkgd2lsbCBiZSBzYW1wbGluZyBteSBkYXRhIHRvIGEgc21hbGxlciBzZXQgb2YgMjUwMDAwIGNhc2VzLiAKYGBge3J9ClNhbXBsZURhdGEgPC0KICBzYW1wbGUoTllQRF9Db21wbGFpbnRfRGF0YV9IaXN0b3JpYywgMjUwMDAwKQpgYGAKCgojIyMgUmVzZWFyY2ggUXVlc3Rpb24KCkJhc2VkIG9uIHRoZSBOWUMgYm9yb3VnaCBkb2VzIHRoZXJlIHNlZW0gdG8gYmUgYSB0cmVuZCBpbiBhIGNlcnRhaW4gdHlwZSBvZiBjcmltZSBjb21taXR0ZWQgdGhlcmU/CgoKIyMjIEJlY29taW5nIEFjcXVhaW50ZWQgd2l0aCBkYXRhOgoKLSAgV2hlcmUgZGlkIHlvdSBmaW5kIHRoZW0/IAogIC0tIGRhdGEuY2l0eW9mbmV3eW9yay51cwogIC0tIFIgcGFja2FnZQoKLSAgV2hvIGNvbGxlY3RlZC9tYWludGFpbnMgdGhlbT8gCiAgLS0gVGhlIGRhdGFzZXQgZm9yIE5ZUERfQ29tcGxhaW50X0RhdGFfSGlzdG9yaWMgaXMgcHJvdmlkZWQgYnkgdGhlIE5ZUEQgYW5kIG1haW50YWluZWQvdXBkYXRlZCBieSBOWUMgT3BlbiBEYXRhLgogIC0tIFRoZSBkYXRhIGZvciBaaXBEZW1vZ3JhcGh5IGlzIHByb3ZpZGVkIGFuZCBtYWludGFpbmVkIGJ5IFJTdHVkaW8uCgotICBXaGVuICYgV2h5IHdlcmUgdGhleSBvcmlnaW5hbGx5IGNvbGxlY3RlZD8KICAtLSBUaGUgTllQRCBkYXRhIHdhcyBvcmlnaW5hbGx5IGNvbGxlY3RlZCB0byBlbmdhZ2UgTmV3IFlvcmtlcnMgaW4gaW5mb3JtYXRpb24gdGhhdCBpcyBwcm9kdWNlZCBhbmQgY29sbGVjdGVkIGJ5IHRoZSBDaXR5IGdvdmVybm1lbnQuIAogIC0tIFRoZSBaaXBEZW1vZ3JhcGh5IHdhcyBwcm92aWRlZCBhcyBkYXRhIHRhYmxlcyB1c2VkIGFzIGV4YW1wbGVzIGluIHRoZSBEYXRhIENvbXB1dGluZyBib29rCiAgICBhbmQgZXhlcmNpc2VzLgoKLSAgV2hhdCBkb2VzIGEgY2FzZSByZXByZXNlbnQgaW4gZWFjaCBkYXRhIHNvdXJjZSwgYW5kIGhvdyBtYW55IHRvdGFsIGNhc2VzIGFyZSBhdmFpbGFibGU/CiAgLS0gQSBjYXNlIGZvciBOWVBEIHJlcHJlc2VudHMgYSBjcmltZSB0aGF0IG9jY3VyZWQgb24gYSBjZXJ0YWluIGRheSwgdGltZSwgbG9jYXRpb24uIEluIHRoZSBvcmlnaW5hbCBkYXRhc2V0IHRoZXJlIGFyZSA2LjUgbWlsbGlvbiBjYXNlcywgYnV0IEkgY3JlYXRlZCBhIHNhbXBsZSBzdWJzZXQgd2hpY2ggY29udGFpbnMgMjUwMDAwLgogIC0tIEEgY2FzZSBmb3IgWmlwRGVtb2dyYXBoeSByZXByZXNlbnRzIGRhdGEgc3VjaCBhcyByYWNlLCBlZHVjYXRpb24sIHdhZ2VzIGJhc2VkIG9uIFpJUCBjb2RlLgoKLSAgV2hhdCBhcmUgc29tZSBvZiB0aGUgdmFyaWFibGVzIHRoYXQgeW91IHBsYW4gdG8gdXNlCiAgLS0gRm9yIE5ZUEQgZGF0YXNldCwgSSBwbGFuIHRvIHVzZSB0aGUgQk9ST19OTSAoYm9yb3VnaCBjcmltZSBvY2N1cnJlZCBpbiksIE9GTlNfREVTQyAoY3JpbWUgZGVzY3JpcHRpb24pLCBDTVBMTlRfRlJfRFQgKGV4YWN0IHRpbWUgb2Ygb2NjdXJlbmNlKSwgYW5kIExBV19DQVRfQ0QgKGxldmVsIG9mIG9mZmVuc2UsIGllLiBmZWxvbnksIG1pc2RlbWVhbm9yKS4KICAtLSBGb3IgWmlwRGVtb2dyYXBoeSwgSSBwbGFuIHRvIHVzZSBIaWdoc2Nob29sZ3JhZHVhdGVvcmhpZ2hlciwgbWVkaWFuZmFtaWx5aW5jb21lZG9sbGFycywgRmFtaWxpZXNiZWxvd3BvdmVydHlsZXZlbCwgWklQLiAKCmBgYHtyfQpuYW1lcyhOWVBEX0NvbXBsYWludF9EYXRhX0hpc3RvcmljKSAgICAgIyMgTmFtZXMgb2YgdmFyaWFibGVzCm5yb3coTllQRF9Db21wbGFpbnRfRGF0YV9IaXN0b3JpYykgICAgICAgIyMgTnVtYmVyIG9mIENhc2VzCnN0cihOWVBEX0NvbXBsYWludF9EYXRhX0hpc3RvcmljKSAgICAgICAjIyBTdHJ1Y3R1cmUgb2Ygb2JqZWN0LCBpbmZvcm1hdGlvbiBvZiBjbGFzcwpgYGAKCmBgYHtyfQpuYW1lcyhaaXBEZW1vZ3JhcGh5KSAgICAgIyMgTmFtZXMgb2YgdmFyaWFibGVzCm5yb3coWmlwRGVtb2dyYXBoeSkgICAgICAgIyMgTnVtYmVyIG9mIENhc2VzCnN0cihaaXBEZW1vZ3JhcGh5KSAgICAgICAjIyBTdHJ1Y3R1cmUgb2Ygb2JqZWN0LCBpbmZvcm1hdGlvbiBvZiBjbGFzcwpgYGAKCiMjIEV4cGxvcmluZyBpbnR1aXRpb24gcmVsYXRlZCB0byB0aGUgcmVzZWFyY2ggcXVlc3Rpb24KCiMjIyBDcmVhdGUgc29tZSBpbmZvcm1hdGl2ZSBwbG90cyBhbmQgc3VtbWFyeSBzdGF0aXN0aWNzIAoKTGV2ZWwgb2YgY3JpbWUgZmFjZXRlZCBhbW9uZyB0aGUgYm9yb3VnaHMKYGBge3J9CkZlbG9ueU1pc2RDcmltZUJhc2Vkb25Cb3JvdWdoIDwtCiAgU2FtcGxlRGF0YSAlPiUKICBncm91cF9ieShCT1JPX05NLExBV19DQVRfQ0QpICU+JQogIHN1bW1hcml6ZSh0b3RhbCA9IHN1bShuKCkpKQoKRmVsb255TWlzZENyaW1lQmFzZWRvbkJvcm91Z2ggJT4lCiAgZ2dwbG90KGFlcyh4ID0gTEFXX0NBVF9DRCwgeSA9IHRvdGFsLCBmaWxsID0gTEFXX0NBVF9DRCkpKwogIGdlb21fYmFyKHN0YXQ9ICdpZGVudGl0eScsIHBvc2l0aW9uID0gJ2RvZGdlJywgd2lkdGggPSAuOSkrCiAgZmFjZXRfd3JhcCh+IEJPUk9fTk0sIG5jb2w9MykKCkZlbG9ueU1pc2RDcmltZUJhc2Vkb25Cb3JvdWdoCmBgYAoKTW9zdCBwb3B1bGFyIGNyaW1lIGJhc2VkIG9uIGJvcm91Z2gKYGBge3J9ClBvcHVsYXJCb3JvdWdoQ3JpbWUgPC0KICBTYW1wbGVEYXRhICU+JQogIGdyb3VwX2J5KEJPUk9fTk0sIE9GTlNfREVTQykgJT4lCiAgc3VtbWFyaXNlKHRvdGFsID0gc3VtKG4oKSkpICU+JQogIGZpbHRlcih0b3RhbCA9PSBtYXgodG90YWwpKQoKUG9wdWxhckJvcm91Z2hDcmltZSAlPiUKICBnZ3Bsb3QoYWVzKHggPSBCT1JPX05NLCB5ID0gdG90YWwsIGZpbGwgPSBPRk5TX0RFU0MpKSsKICBnZW9tX2JhcihzdGF0PSAnaWRlbnRpdHknLCBwb3NpdGlvbiA9ICdkb2RnZScsIHdpZHRoID0gLjkpCmBgYAoKYGBge3J9CgpgYGAKCgoKIyMjIERlc2NyaWJlIHByZWxpbWluYXJ5IG9ic2VydmF0aW9ucyBhbmQgaW50dWl0aW9uIGFib3V0IHRoZSByZXNlYXJjaCBxdWVzdGlvbgpQbG90IDE6Ci0gWW91IGNhbiBzZWUgZnJvbSB0aGUgZGlzdHJpYnV0aW9uLCB0aGUgbW9zdCBwb3B1bGFyIGxldmVsIG9mIGNyaW1lIGlzIG1pc2RlbWVhbm9yLCB3aXRoIGZlbG9ueSBzZWNvbmQuIEJyb29rbHluIGFwcGVhcnMgdG8gaGF2ZSB0aGUgaGlnaGVzdCBhbW91bnQgb2YgY3JpbWUsIGFuZCBzdGF0ZW4gaXNsYW5kIHRoZSBsb3dlc3QuClBsb3QgMjoKLSBUaGUgY3JpbWUgdGhhdCBoYXBwZW5zIHRoZSBtb3N0IG9mdGVuIGlzIHBldGl0IGxhcmNlbnksIHdpdGggdGhlIG1heGltdW0gdG90YWwgYW1vdW50IG9mIHRpbWVzIGFwcHJveGltYXRlbHkgfjIwMDAwIGluIE1hbmhhdHRhbi4gSGFycmFzc21lbnQgMiBpcyB0aGUgbGVhZGluZyBjcmltZSBpbiBzdGF0ZW4gaXNsYW5kIHdpdGggYXBwcm94aW1hdGVseSB+MjUwMCBvY2N1cmVuY2VzLiAKCgojIyMgVHdvIERhdGEgU291cmNlcwotIFByaW1hcnkgZGF0YTogIFRoaXMgaXMgdGhlIG1haW4gZGF0YSBzb3VyY2UgdG8gYmUgdXNlZCBpbiB5b3VyIGludmVzdGlnYXRpb24gYW5kIGl0IE1VU1QgTk9UIGJlIGxvYWRlZCBkaXJlY3RseSBmcm9tIGFuIFIgcGFja2FnZS4gWW91IHNob3VsZCBoYXZlIG1hbnkgY2FzZXMgKGUuZy4sIGF0IGxlYXN0IGh1bmRyZWRzLS1wcmVmZXJhYmx5IG1hbnkgdGhvdXNhbmRzKSwgbWFueSB2YXJpYWJsZXMgaW5jbHVkaW5nIGEgbWl4dHVyZSBvZiBib3RoIGNhdGVnb3JpY2FsICYgcXVhbnRpdGF0aXZlIHZhcmlhYmxlcy4gIApgYGB7cn0KbGlicmFyeShyZWFkcikKTllDX2NyaW1lIDwtIHJlYWRfY3N2KCcvaG9tZS9heHI0MDIvU1RBVDE4NCBBQ1RJVklUWS9TVEFUMTg0X0ZpbmFsUHJvamVjdC8nKQpWaWV3KE5ZQ19jcmltZSkKYGBgCgotIE90aGVyIGRhdGEgc291cmNlczogTm8gcHJvYmxlbSBmb3IgdGhlc2UgdG8gY29tZSBmcm9tIGFuIFIgcGFja2FnZS0tZm9yIGV4YW1wbGUsIHRoZSBaaXBHZW9ncmFwaHkgb3IgWmlwRGVtb2dyYXBoeSBkYXRhIChmcm9tIERhdGFDb21wdXRpbmcgcGFja2FnZSkgbWlnaHQgYmUgdXNlZnVsIHdoZW4gam9pbmVkIHdpdGggcHJpbWFyeSBzb3VyY2VzIGFzIHlvdSBpbnZlc3RpZ2F0ZSBzb21lIHBoZW5vbWVub24gaW4gdGhlIFVTLiAKYGBge3J9CmxpYnJhcnkoRGF0YUNvbXB1dGluZykKZGF0YSgiWmlwRGVtb2dyYXBoeSIpCmBgYAoKCk5vdGU6IEVhY2ggZGF0YSBzb3VyY2Ugc2hvdWxkIGJlIGxlc3MgdGhhbiA4MC0xMDBNQi0tdGhlIG1heGltdW0gZmlsZSBzaXplIHBlcm1pdHRlZCBpbiBhIEdpdEh1YiBSZXBvLi4uIHVzZSBzYW1wbGluZyB0byBjcmVhdGUgYSByZWR1Y2VkIHZlcnNpb24gZm9yIHRoZSBwdXJwb3NlIG9mIHRoZSBwcm9qZWN0IGlmIG5lZWRlZCBhcyB3ZSd2ZSBkb25lIG9jY2FzaW9uYWxseSBpbiBleGVyY2lzZXMgYW5kIHdlZWtseSBhY3Rpdml0aWVzLgoK</div>
 
 
 
