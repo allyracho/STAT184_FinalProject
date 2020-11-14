@@ -95,12 +95,9 @@ MedianIncome
 
 
 ### Describe preliminary observations and intuition about the research question
-* Plot 1:
-- You can see from the distribution, the most popular level of crime is misdemeanor, with felony second. Brooklyn appears to have the highest amount of crime, and Staten Island the lowest.
-* Plot 2:
-- The crime that happens the most often is petit larceny, with the maximum total amount of times approximately ~20000 in Manhattan. Harrassment 2 is the leading crime in staten island with approximately ~2500 occurences. 
-* Plot 3:
-- You can see based on Zipcode, 10004 (Manhattan) has the highest mean income at approximately ~160000 and the lowest being 10453 (Bronx) and 11212 (Queens).  
+* Plot 1: You can see from the distribution, the most popular level of crime is misdemeanor, with felony second. Brooklyn appears to have the highest amount of crime, and Staten Island the lowest.
+* Plot 2: The crime that happens the most often is petit larceny, with the maximum total amount of times approximately ~20000 in Manhattan. Harrassment 2 is the leading crime in staten island with approximately ~2500 occurences. 
+* Plot 3: You can see based on Zipcode, 10004 (Manhattan) has the highest mean income at approximately ~160000 and the lowest being 10453 (Bronx) and 11212 (Queens).  
 
 
 ### Two Data Sources
