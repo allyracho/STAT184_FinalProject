@@ -82,7 +82,7 @@ PopularBoroughCrime %>%
   geom_bar(stat= 'identity', position = 'dodge', width = .9)
 ```
 
-3. Based on zip code of borough, what is the median family income (MeanZip_3)
+3. Based on zip code of borough, what is the mean family income? (MeanZip_3)
 ```{r}
 MedianIncome <- 
   MeanZIP_3 %>%
