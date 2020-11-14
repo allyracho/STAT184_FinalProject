@@ -31,7 +31,7 @@ Based on the NYC borough and average income per borough, does there seem to be a
   -- The dataset for NYPD_Complaint_Data_Historic is provided by the NYPD and maintained/updated by NYC Open Data. The data for MeanZIP is provided and maintained by University of Michigan Population Studies Center. 
 
 -  When & Why were they originally collected?
-  -- The NYPD data was originally collected to engage New Yorkers in information that is produced and collected by the City government. The MeanZip was created to explain how to create a zipcode dataset.
+  -- The NYPD data was originally collected to engage New Yorkers in information that is produced and collected by the City government. The collection started in 2006, but was made public in 2016 and is updated frequently. The MeanZip was created to explain how to create a zipcode dataset. The data is based on information from 2006-2010. I was unable to see when the data was originally released by the website. 
 
 -  What does a case represent in each data source, and how many total cases are available?
   -- A case for NYPD represents a crime that occurred on a certain day, time, location. In the original dataset there are 6.5 million cases, but I created a sample subset which contains 250000. A case for MeanZip is based on zipcode, and the avg/median income of such. There are 32634 cases for this dataset.
