@@ -25,25 +25,19 @@ Based on the NYC borough does there seem to be a trend in a certain type of crim
 ### Becoming Acquainted with data:
 
 -  Where did you find them? 
-  -- data.cityofnewyork.us
-  -- R package
+  -- www.data.cityofnewyork.us,www.psc.isr.umich.edu/dis/census/Features/tract2zip/
 
 -  Who collected/maintains them? 
-  -- The dataset for NYPD_Complaint_Data_Historic is provided by the NYPD and maintained/updated by NYC Open Data.
-  -- The data for ZipDemography is provided and maintained by RStudio.
+  -- The dataset for NYPD_Complaint_Data_Historic is provided by the NYPD and maintained/updated by NYC Open Data. The data for MeanZIP is provided and maintained by University of Michigan Population Studies Center. 
 
 -  When & Why were they originally collected?
-  -- The NYPD data was originally collected to engage New Yorkers in information that is produced and collected by the City government. 
-  -- The ZipDemography was provided as data tables used as examples in the Data Computing book
-    and exercises.
+  -- The NYPD data was originally collected to engage New Yorkers in information that is produced and collected by the City government. The MeanZip was created to explain how to create a zipcode dataset.
 
 -  What does a case represent in each data source, and how many total cases are available?
-  -- A case for NYPD represents a crime that occured on a certain day, time, location. In the original dataset there are 6.5 million cases, but I created a sample subset which contains 250000.
-  -- A case for ZipDemography represents data such as race, education, wages based on ZIP code.
+  -- A case for NYPD represents a crime that occured on a certain day, time, location. In the original dataset there are 6.5 million cases, but I created a sample subset which contains 250000. A case for MeanZip is based on zipcode, the avg/median income.
 
 -  What are some of the variables that you plan to use
-  -- For NYPD dataset, I plan to use the BORO_NM (borough crime occurred in), OFNS_DESC (crime description), CMPLNT_FR_DT (exact time of occurence), and LAW_CAT_CD (level of offense, ie. felony, misdemeanor).
-  -- For ZipDemography, I plan to use Highschoolgraduateorhigher, medianfamilyincomedollars, Familiesbelowpovertylevel, ZIP. 
+  -- For NYPD dataset, I plan to use the BORO_NM (borough crime occurred in), OFNS_DESC (crime description), CMPLNT_FR_DT (exact time of occurence), and LAW_CAT_CD (level of offense, ie. felony, misdemeanor). For MeanZIP, I plan to use ZIP, Mean, Pop. 
 
 ```{r}
 names(NYPD_Complaint_Data_Historic)     ## Names of variables
@@ -52,16 +46,16 @@ str(NYPD_Complaint_Data_Historic)       ## Structure of object, information of c
 ```
 
 ```{r}
-names(ZipDemography)     ## Names of variables
-nrow(ZipDemography)       ## Number of Cases
-str(ZipDemography)       ## Structure of object, information of class
+names(MeanZIP_3)     ## Names of variables
+nrow(MeanZIP_3)       ## Number of Cases
+str(MeanZIP_3)       ## Structure of object, information of class
 ```
 
 ## Exploring intuition related to the research question
 
 ### Create some informative plots and summary statistics 
 
-Level of crime faceted among the boroughs
+1. Level of crime faceted among the boroughs (NYPD)
 ```{r}
 FelonyMisdCrimeBasedonBorough <-
   SampleData %>%
@@ -76,7 +70,7 @@ FelonyMisdCrimeBasedonBorough %>%
 FelonyMisdCrimeBasedonBorough
 ```
 
-Most popular crime based on borough
+2. Most popular crime based on borough (NYPD)
 ```{r}
 PopularBoroughCrime <-
   SampleData %>%
@@ -89,17 +83,25 @@ PopularBoroughCrime %>%
   geom_bar(stat= 'identity', position = 'dodge', width = .9)
 ```
 
+3. Based on zip code of borough, what is the median family income (MeanZip_3)
 ```{r}
-
+MedianIncome <- 
+  MeanZIP_3 %>%
+  filter(Zip == 10453 | Zip == 11212 | Zip == 10004 | Zip == 11361 | Zip == 10314) %>%
+  ggplot(aes(x = Zip, y =Mean))+
+  geom_point()
+MedianIncome
 ```
 
 
 
 ### Describe preliminary observations and intuition about the research question
-Plot 1:
+* Plot 1:
 - You can see from the distribution, the most popular level of crime is misdemeanor, with felony second. Brooklyn appears to have the highest amount of crime, and staten island the lowest.
-Plot 2:
+* Plot 2:
 - The crime that happens the most often is petit larceny, with the maximum total amount of times approximately ~20000 in Manhattan. Harrassment 2 is the leading crime in staten island with approximately ~2500 occurences. 
+* Plot 3:
+- You can see based on Zipcode, 10004 (Manhattan) has the highest mean income at approximately ~160000 and the lowest being 10453 (Bronx) and 11212 (Queens).  
 
 
 ### Two Data Sources
@@ -112,8 +114,9 @@ View(NYC_crime)
 
 - Other data sources: No problem for these to come from an R package--for example, the ZipGeography or ZipDemography data (from DataComputing package) might be useful when joined with primary sources as you investigate some phenomenon in the US. 
 ```{r}
-library(DataComputing)
-data("ZipDemography")
+library(readr)
+NYC_crime <- read_csv('/home/axr402/STAT184 ACTIVITY/STAT184_FinalProject/MeanZIP-3')
+View(MeanZIP_3)
 ```
 
 
