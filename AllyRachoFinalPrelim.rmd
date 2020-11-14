@@ -19,7 +19,7 @@ SampleData <-
 
 ### Research Question
 
-Based on the NYC borough does there seem to be a trend in a certain type of crime committed there?
+Based on the NYC borough and average income per borough, does there seem to be a trend in a certain type of crime committed there?
 
 
 ### Becoming Acquainted with data:
@@ -34,15 +34,15 @@ Based on the NYC borough does there seem to be a trend in a certain type of crim
   -- The NYPD data was originally collected to engage New Yorkers in information that is produced and collected by the City government. The MeanZip was created to explain how to create a zipcode dataset.
 
 -  What does a case represent in each data source, and how many total cases are available?
-  -- A case for NYPD represents a crime that occured on a certain day, time, location. In the original dataset there are 6.5 million cases, but I created a sample subset which contains 250000. A case for MeanZip is based on zipcode, the avg/median income.
+  -- A case for NYPD represents a crime that occurred on a certain day, time, location. In the original dataset there are 6.5 million cases, but I created a sample subset which contains 250000. A case for MeanZip is based on zipcode, and the avg/median income of such. There are 32634 cases for this dataset.
 
 -  What are some of the variables that you plan to use
-  -- For NYPD dataset, I plan to use the BORO_NM (borough crime occurred in), OFNS_DESC (crime description), CMPLNT_FR_DT (exact time of occurence), and LAW_CAT_CD (level of offense, ie. felony, misdemeanor). For MeanZIP, I plan to use ZIP, Mean, Pop. 
+  -- For the NYPD dataset, I plan to use the BORO_NM (borough crime occurred in), OFNS_DESC (crime description), CMPLNT_FR_DT (exact time of occurence), and LAW_CAT_CD (level of offense, ie. felony, misdemeanor). For MeanZIP, I plan to use Zip (Zip code), Mean (Avg. Income), Pop (Population). 
 
 ```{r}
-names(NYPD_Complaint_Data_Historic)     ## Names of variables
-nrow(NYPD_Complaint_Data_Historic)       ## Number of Cases
-str(NYPD_Complaint_Data_Historic)       ## Structure of object, information of class
+names(SampleData)     ## Names of variables
+nrow(SampleData)       ## Number of Cases
+str(SampleData)       ## Structure of object, information of class
 ```
 
 ```{r}
@@ -97,7 +97,7 @@ MedianIncome
 
 ### Describe preliminary observations and intuition about the research question
 * Plot 1:
-- You can see from the distribution, the most popular level of crime is misdemeanor, with felony second. Brooklyn appears to have the highest amount of crime, and staten island the lowest.
+- You can see from the distribution, the most popular level of crime is misdemeanor, with felony second. Brooklyn appears to have the highest amount of crime, and Staten Island the lowest.
 * Plot 2:
 - The crime that happens the most often is petit larceny, with the maximum total amount of times approximately ~20000 in Manhattan. Harrassment 2 is the leading crime in staten island with approximately ~2500 occurences. 
 * Plot 3:
@@ -105,20 +105,13 @@ MedianIncome
 
 
 ### Two Data Sources
-- Primary data:  This is the main data source to be used in your investigation and it MUST NOT be loaded directly from an R package. You should have many cases (e.g., at least hundreds--preferably many thousands), many variables including a mixture of both categorical & quantitative variables.  
-```{r}
-library(readr)
-NYC_crime <- read_csv('/home/axr402/STAT184 ACTIVITY/STAT184_FinalProject/')
-View(NYC_crime)
-```
 
-- Other data sources: No problem for these to come from an R package--for example, the ZipGeography or ZipDemography data (from DataComputing package) might be useful when joined with primary sources as you investigate some phenomenon in the US. 
-```{r}
-library(readr)
-NYC_crime <- read_csv('/home/axr402/STAT184 ACTIVITY/STAT184_FinalProject/MeanZIP-3')
-View(MeanZIP_3)
-```
+- Primary data: NYPD_Complaint_Data_Historic --- SampleData
+
+- Other data sources: MeanZIP-3
 
 
-Note: Each data source should be less than 80-100MB--the maximum file size permitted in a GitHub Repo... use sampling to create a reduced version for the purpose of the project if needed as we've done occasionally in exercises and weekly activities.
+
+
+
 
