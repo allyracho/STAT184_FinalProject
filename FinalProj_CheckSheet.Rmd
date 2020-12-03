@@ -19,9 +19,11 @@ output:  html_notebook
 
 (A) .Rmd Line numbers where at least two different data sources are imported:  
 
+Lines 18 & 19
 
 (B) .Rmd Line numbers for inspecting data intake:  
 
+Lines 31-35, 38-42
 
 ### Data Wrangling (5 out of 8 required)
 

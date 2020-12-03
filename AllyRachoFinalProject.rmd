@@ -1,0 +1,79 @@
+---
+title: "Stat 184: Final Project"
+author: "Ally Racho"
+due date: "12/10/2020"
+output: html_document
+---
+
+## Front Matter
+
+### Necessary Libraries:
+```{r, message=FALSE}
+library(mosaic)
+library(tidyverse)
+library(readxl)
+```
+
+### Imported Datasets:
+```{r, message=FALSE, warning=FALSE}
+read.csv("C:\\Users\\allyracho\\Desktop\\NYPD_Complaint_Data_Historic.csv") # Import primary source
+read_excel("C:\\Users\\allyracho\\Desktop\\MeanZIP-3.xlsx") # Import secondary source
+```
+Since the original dataset has over 1 million cases and is too large of a file, I will be sampling my data to a smaller set of 250000 cases. 
+```{r}
+SampleData <-
+  sample(NYPD_Complaint_Data_Historic, 250000)
+```
+
+## Becoming Acquainted with data:
+
+1. NYPD data:
+```{r}
+names(SampleData)     ## Names of variables
+nrow(SampleData)       ## Number of Cases
+str(SampleData)       ## Structure of object, information of class
+```
+
+2. MeanZip Data:
+```{r}
+names(MeanZIP_3)     ## Names of variables
+nrow(MeanZIP_3)       ## Number of Cases
+str(MeanZIP_3)       ## Structure of object, information of class
+```
+
+## Research Question
+
+Based on the NYC borough and average income per borough, does there seem to be a trend in a certain type of crime committed there?
+
+## Data Wrangling
+
+Most popular crime based on borough (NYPD)
+```{r}
+PopularBoroughCrime <-
+  SampleData %>%
+  group_by(BORO_NM, OFNS_DESC) %>%
+  summarise(total = sum(n())) %>%
+  filter(total == max(total))
+```
+
+3. Based on zip code of borough, what is the mean family income? (MeanZip_3)
+```{r}
+MedianIncome <- 
+  MeanZIP_3 %>%
+  filter(Zip == 10453 | Zip == 11212 | Zip == 10004 | Zip == 11361 | Zip == 10314)
+```
+## Data Visualizations
+
+```{r}
+PopularBoroughCrime %>%
+  ggplot(aes(x = BORO_NM, y = total, fill = OFNS_DESC))+
+  geom_bar(stat= 'identity', position = 'dodge', width = .9)
+```
+
+```{r}
+MedianIncome %>%
+  ggplot(aes(x = Zip, y =Mean))+
+  geom_point()
+```
+
+## 
