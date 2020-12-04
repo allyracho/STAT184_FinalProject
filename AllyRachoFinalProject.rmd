@@ -45,35 +45,49 @@ str(MeanZIP_3)       ## Structure of object, information of class
 
 Based on the NYC borough and average income per borough, does there seem to be a trend in a certain type of crime committed there?
 
-## Data Wrangling
+## Wrangling and Plots
 
-Most popular crime based on borough (NYPD)
+Most popular crime based on borough (NYPD) -- figure out most popular crime in boroughs
 ```{r}
 PopularBoroughCrime <-
   SampleData %>%
   group_by(BORO_NM, OFNS_DESC) %>%
   summarise(total = sum(n())) %>%
   filter(total == max(total))
-```
 
-3. Based on zip code of borough, what is the mean family income? (MeanZip_3)
-```{r}
-MedianIncome <- 
-  MeanZIP_3 %>%
-  filter(Zip == 10453 | Zip == 11212 | Zip == 10004 | Zip == 11361 | Zip == 10314)
-```
-## Data Visualizations
-
-```{r}
 PopularBoroughCrime %>%
   ggplot(aes(x = BORO_NM, y = total, fill = OFNS_DESC))+
   geom_bar(stat= 'identity', position = 'dodge', width = .9)
 ```
 
+Based on zip code of borough, what is the mean family income? (MeanZip_3) -- find mean income per borough 
 ```{r}
-MedianIncome %>%
+MedianIncome <- 
+  MeanZIP_3 %>%
+  filter(Zip == 10453 | Zip == 11212 | Zip == 10004 | Zip == 11361 | Zip == 10314) %>%
   ggplot(aes(x = Zip, y =Mean))+
   geom_point()
 ```
 
-## 
+Most popular crime over time per borough (NYPD)
+```{r}
+year <- "[0-9]{4}"
+
+
+PopularBoroughCrimePerYear <-
+  SampleData %>%
+  group_by(BORO_NM, OFNS_DESC, year)%>%
+  summarise(total = sum(n())) %>%
+  filter(total == max(total))
+
+PopularBoroughCrimePerYear %>%
+  ggplot(aes(x = CMPLNT_FR_DT, y = total, color = OFNS_DESC)) +
+  geom_point() +
+  geom_line()
+PopularBoroughCrimePerYear
+```
+
+Join Popular crime over time and mena income
+
+
+
